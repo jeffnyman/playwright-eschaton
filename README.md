@@ -46,7 +46,7 @@ Look at how the various projects are set up; look at what happens when you execu
 
 If you find any of this useful, consider leaving a ⭐️ for this repo.
 
-🟢 Prerequisites
+## 🟢 Prerequisites
 
 Make sure you have [Node.js](https://nodejs.org/en). The LTS version should be fine. You will also need the `npm` package manager, which comes with Node.js. A development environment or IDE with TypeScript/JavaScript support will help. [Visual Studio Code](https://code.visualstudio.com/) is a good choice.
 
@@ -270,7 +270,7 @@ This project is using GitHub Actions. Check [playwright.yml](https://github.com/
 
 ## 🔸 Test References
 
-I'm using my own site material for this. One is a sample article called [A Ludic Historian Précis](https://testerstories.com/xyzzy/ludic/article/precis.html). The other is my [Playwright Playwround](https://testerstories.com/xyzzy/).
+I'm using my own site material for this. One is a sample article called [A Ludic Historian Précis](https://testerstories.com/xyzzy/ludic/article/precis.html). The other is my [Playwright Playground](https://testerstories.com/xyzzy/).
 
 ## 👨‍💻 Jeff's Principles of Coding
 

@@ -18,7 +18,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test --project "Playground UI Tests"
+        run: npx playwright test --project "Ludic UI Tests"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
