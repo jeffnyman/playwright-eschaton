@@ -18,7 +18,7 @@
 <p align="center">
   <a href="https://github.com/jeffnyman/playwright-eschatont/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Playwright Eschaton is released under the MIT license.">
-  </a>  
+  </a>
 </p>
 
 <p align="center">
@@ -69,7 +69,7 @@ In Playwright, a project is a logical group of tests that run using the same con
 
 You can run any Playwright tests using the [VS Code extension](https://playwright.dev/docs/getting-started-vscode). This project will recommend that extension if you are using VS Code. However, it is highly recommended that you understand how to execute from the CLI.
 
-### Tautology Tests
+### 🔸 Tautology Tests
 
 These tests do not use a browser at all. They are meant to showcase the idea of simply writing tests and having some general tautologies that validate the basic operation of the testing framework.
 
@@ -91,7 +91,7 @@ For Windows, particularly in Powershell:
 npx playwright test --project "Tautology Tests" --grep "@canary"
 ```
 
-### Sauce Labs Example (UI)
+### 🔸 Sauce Labs Example (UI)
 
 This is an example project that shows how [project dependencies](https://playwright.dev/docs/next/test-projects#dependencies) in Playwright work. The idea is that you can login to an application and save those logged in credentials in storage state. Tests that rely on the logged in setup can then use this storage stage when executing, which means they don't have to login again before each test.
 
@@ -134,7 +134,7 @@ This small little project is actually showcasing a series of things, such as env
 
 In terms of the tests, you might also note that this project indicates a specific `testIdAttribute` that is used by the Sauce Labs demo, which is `data-test`. This is what will be looked for when calls are made to the `getByTestId()` function. You might also check out how the projects use `testMatch` and `testIgnore` settings based on the name of the spec files.
 
-### Ludic UI Tests
+### 🔸 Ludic UI Tests
 
 The Ludic pages are simply designed as blog content pages. Their complexity comes in from how the header and the scroll-to-top functionality have dynamic aspects, in terms of how and when they display. The dark-light mode is a relatively simply implementation that also accounts for the system setting. There are also "click to enlarge" elements on the page that provide a modal view for images.
 
@@ -144,7 +144,7 @@ To run these tests:
 npx playwright test --project "Ludic UI Tests"
 ```
 
-### Playground UI Tests
+### 🔸 Playground UI Tests
 
 The playground area is designed to provide a simple landing page but then add some complexity. For example, the navigation pull out menu can have some challenges around checking for visibility and whether the widgets are in the viewport or not.
 
@@ -158,7 +158,7 @@ The various pages within the playground are meant to run the gamut from relative
 
 The planet weight area has two tests: one that uses a page object and one that does not. The same applies to the landing page tests. In both of those areas, you can see examples of iterating over data conditions while providing a single test condition.
 
-### Todo MVC UI Tests
+### 🔸 Todo MVC UI Tests
 
 I have provided my own [Todo MVC](https://testerstories.com/todomvc) application. You can run the tests:
 
@@ -176,7 +176,7 @@ In this project, the components for the Todo MVC application can be found in the
 
 The `demo-todo-app.spec.ts` file is the same file that comes with Playwright as a working example. What I've done is show that this test, without modification, works on my slightly modified Todo MVC example. What this does is allow you to see the component approach side-by-side with the non-component approach.
 
-### Weather (API)
+### 🔸 Weather (API)
 
 To run the tests for this you need to obtain an account and API key from Weather API. You can see the OpenAPI spec I have available for the [OpenWeatherMap API](https://testerstories.com/swagger-ui/?urls.primaryName=Weather+API), which I'm using for this example.
 
@@ -221,7 +221,7 @@ npm run test:weather:jest
 
 What all of these examples show is that you can run multiple test styles within the same project.
 
-### Booker API Tests
+### 🔸 Booker API Tests
 
 The goal of this project is to demonstrate how to create an abstraction layer on top of standard testing practices, specifically focusing on API interactions using Playwright. To run the tests:
 
@@ -270,6 +270,42 @@ It's also possible to write custom reporters and one is provided with this proje
 This is a custom reporter is provided that generates a very condensed view of test execution. This condensed format could be used to publish test results to something like an SMS message or a Slack channel update. The default output location is to the root project directory as a file called `summary.txt`. You can change this location in the reporter configuration, which this project does.
 
 There is a `Stats` interface provided that the custom summary reporter uses but this can also be used by your own custom reporter, essentially based on the summary report. For an example of how to do that, you'll see a file called `concise.ts` in the `support/reporter` directory. This project uses that concise report as part of the reporter configuration.
+
+## 🧬 Code Quality
+
+This project uses Prettier.
+
+<p align="center">
+  <a href="https://prettier.io/docs/en/index.html"><img src="https://img.shields.io/badge/Documentation-Prettier-f7ba3e.svg?logo=prettier" alt="Prettier"></a>
+  <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/GitHub-Prettier-f7ba3e.svg?logo=github" alt="Prettier - GitHub"></a>
+  <a href="https://stackoverflow.com/questions/tagged/prettier"><img src="https://img.shields.io/badge/stackoverflow-Prettier-e87922.svg?logo=stackoverflow" alt="Prettier - Stack Overflow"></a>
+</p>
+
+This is critical for any automation-based project. To run Prettier and automatically fix any issues, you can do this:
+
+```shell
+npm run format:fix
+```
+
+This project uses ESLint.
+
+<p align="center">
+  <a href="https://eslint.org/docs/latest/"><img src="https://img.shields.io/badge/Documentation-ESLint-4b32c3.svg?logo=eslint" alt="ESLint"></a>
+  <a href="https://github.com/eslint/eslint"><img src="https://img.shields.io/badge/GitHub-ESLint-4b32c3.svg?logo=github" alt="ESLint - GitHub"></a>
+  <a href="https://stackoverflow.com/questions/tagged/eslint"><img src="https://img.shields.io/badge/stackoverflow-ESLint-e87922.svg?logo=stackoverflow" alt="ESLint - Stack Overflow"></a>
+</p>
+
+You can run linting in this project by doing this:
+
+```shell
+npm run lint
+```
+
+If you're feeling confident that the linter will be able to auto-fix your isue, you can run it like this:
+
+```shell
+npm run lint:fix
+```
 
 ## 🌀 Pipeline
 
