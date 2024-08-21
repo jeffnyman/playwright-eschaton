@@ -11,9 +11,20 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/jeffnyman/playwright-eschaton/actions/workflows/playwright.yml">
-    <img src="https://github.com/jeffnyman/playwright-eschaton/actions/workflows/playwright.yml/badge.svg" alt="Playwright Eschaton Test Status">
-  </a>
+  <table>
+  <tr>
+    <td>
+      <a href="https://github.com/jeffnyman/playwright-eschaton/actions/workflows/playwright.yml">
+        <img src="https://github.com/jeffnyman/playwright-eschaton/actions/workflows/playwright.yml/badge.svg" alt="Playwright Eschaton Test Status">
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/jeffnyman/playwright-eschaton/actions/workflows/lint.yaml">
+        <img src="https://github.com/vitalets/playwright-bdd/actions/workflows/lint.yaml/badge.svg" alt="Playwright Eschaton Lint Status">
+      </a>
+    </td>
+  </tr>
+  </table>
 </p>
 
 <p align="center">
