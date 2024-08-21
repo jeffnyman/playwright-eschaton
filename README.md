@@ -311,6 +311,87 @@ npm run lint:fix
 
 This project is using GitHub Actions. Check [playwright.yml](https://github.com/jeffnyman/playwright-eschaton/blob/main/.github/workflows/playwright.yml).
 
+## 🐳 Docker
+
+To run tests in Docker containers, follow these steps:
+
+1. **Build the Docker Image**
+
+Install Docker and then build the Docker image from the provided Dockerfile:
+
+```shell
+docker build -t <image-name> .
+```
+
+2. **Create and Launch the Container**
+
+Create a container from the image and launch it in detached mode:
+
+```shell
+docker run -it -d <image-name>
+```
+
+3. **Verify Container is Running**
+
+Check that the container is up and running by listing all containers:
+
+```shell
+docker ps -a
+```
+
+Copy the `container-id` of your running container.
+
+4. **Log into the Container**
+
+Log into the running container's shell:
+
+```shell
+docker exec -it <container-id> bash
+```
+
+5. **Run Playwright Tests**
+
+Inside the Docker container, run your Playwright tests as usual:
+
+```shell
+npx playwright test
+```
+
+6. **Stop and Remove the Container (optional)**
+
+After your tests are done, you can stop and remove the container to clean up:
+
+```shell
+docker stop <container-id>
+docker rm <container-id>
+```
+
+### Example Commands
+
+Build the Docker image:
+
+```shell
+docker build -t playwright-eschaton .
+```
+
+Create and run the container:
+
+```shell
+docker run -it -d playwright-eschaton
+```
+
+Log into the container:
+
+```shell
+docker exec -it <container-id> bash
+```
+
+Run tests inside the container:
+
+```shell
+npx playwright test
+```
+
 ## 🔸 Test References
 
 I'm using my own site material for this. One is a sample article called [A Ludic Historian Précis](https://testerstories.com/xyzzy/ludic/article/precis.html). The other is my [Playwright Playground](https://testerstories.com/xyzzy/).
