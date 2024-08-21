@@ -167,7 +167,15 @@ I have provided my own [Todo MVC](https://testerstories.com/todomvc) application
 npx playwright test --project "Todo UI Tests"
 ```
 
-The `demo-todo-app.spec.ts` file is the same file that comes with Playwright as a working example. What I've done is show that this test, without modification, works on my slightly modified Todo MVC example.
+The Page Object Model is the often recommended approach for effective code organization in tests. Yet the very naming of the model -- page object -- tends to have people modeling only a whole page. Yet, there are often sections of a page that make sense to model on their own.
+
+Some of these might be common elements between all pages, such as any navigation, headers and footers. Others might simply be defined areas of use that make sense to model distinctly. We can call this a Component Model approach.
+
+A component approach would provide a bit more possibility for reuse but also for composability. The basic idea would be to create an intermediate layer of components that model aspects of the application and that all tests can utilie.
+
+In this project, the components for the Todo MVC application can be found in the `components` folder for the project. The `ts-todo-app.spec.ts` shows the tests using my TesterStories application but using the component model.
+
+The `demo-todo-app.spec.ts` file is the same file that comes with Playwright as a working example. What I've done is show that this test, without modification, works on my slightly modified Todo MVC example. What this does is allow you to see the component approach side-by-side with the non-component approach.
 
 ### Weather (API)
 
