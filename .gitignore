@@ -1,5 +1,6 @@
 .env
 .auth/
+@rerun.txt
 
 node_modules/
 results/

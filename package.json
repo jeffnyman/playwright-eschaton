@@ -12,6 +12,7 @@
     "specs:dashboard": "npx ts-node support/cucumber/report.ts",
     "specs:report": "npx open-cli results/spec-report.html",
     "specs:dryrun": "npx cucumber-js test --dry-run",
+    "specs:rerun": "npx cucumber-js -p rerun @rerun.txt",
     "specs": "npx cucumber-js test",
     "test:weather:postman": "node ./tests-supplement/weather/newman/weather.postman.test.mjs",
     "test:weather:pw": "npx playwright test --project=\"Weather API Tests\"",
