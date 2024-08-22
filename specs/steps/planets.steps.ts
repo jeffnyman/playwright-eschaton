@@ -11,7 +11,7 @@ function isApproximatelyEqual(
 }
 
 Given("the planet weight page", async function () {
-  await pageFixture.page.goto("https://testerstories.com/xyzzy/planets.html");
+  await pageFixture.page.goto(`${process.env.BASEURL}/xyzzy/planets.html`);
 });
 
 When("the weight calculated is {int}", async function (int) {

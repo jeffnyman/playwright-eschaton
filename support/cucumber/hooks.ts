@@ -1,9 +1,15 @@
-import { Before, After, AfterAll, Status } from "@cucumber/cucumber";
-import { chromium, Browser, BrowserContext } from "@playwright/test";
+import { Before, BeforeAll, After, AfterAll, Status } from "@cucumber/cucumber";
+import { Browser, BrowserContext } from "@playwright/test";
 import { pageFixture } from "./pageFixture";
+import { invokeBrowser } from "../browserManager";
+import { getEnv } from "../env/env";
 
 let browser: Browser;
 let context: BrowserContext;
+
+BeforeAll(async function () {
+  getEnv();
+});
 
 Before(async function (scenario) {
   if (!scenario.pickle.tags.some((tag) => tag.name === "@canary")) {
@@ -12,7 +18,8 @@ Before(async function (scenario) {
     // the `scenario` argument so I would not be able to check for
     // the tag.
     if (!browser) {
-      browser = await chromium.launch({ headless: false });
+      //browser = await chromium.launch({ headless: false });
+      browser = await invokeBrowser();
     }
     context = await browser.newContext();
     const page = await context.newPage();
