@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { PlanetsPage } from "./pages/planets.page";
+import { PlanetsPage } from "../../../support/pages/planets.page";
 
 let planetsPage: PlanetsPage;
 

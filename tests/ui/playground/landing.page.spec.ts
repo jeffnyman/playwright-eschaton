@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { LandingPage } from "./pages/landing.page";
+import { LandingPage } from "../../../support/pages/landing.page";
 
 let landingPage: LandingPage;
 

@@ -6,7 +6,7 @@
   "description": "A Pedagogical Pastiche of Playwright Programming",
   "license": "MIT",
   "scripts": {
-    "test": "npm run clean && npm run pretest && npm run specs && npm run specs:dashboard",
+    "test": "npm run clean && npm run pretest && npm run tests && npm run specs && npm run specs:dashboard",
     "clean": "npx rimraf results",
     "specs:dashboard:show": "npx open-cli results/reports/index.html",
     "specs:dashboard": "npx ts-node support/cucumber/report.ts",
@@ -17,6 +17,7 @@
     "test:weather:postman": "node ./tests-supplement/weather/newman/weather.postman.test.mjs",
     "test:weather:pw": "npx playwright test --project=\"Weather API Tests\"",
     "test:weather:jest": "jest",
+    "tests": "npx playwright test",
     "pretest": "npx ts-node support/init.ts",
     "report:pw": "npx playwright show-report results",
     "lint:fix": "npx eslint . --fix",
