@@ -45,6 +45,18 @@ Look at how the various projects are set up; look at what happens when you execu
 
 If you find any of this useful, consider leaving a ⭐️ for this repo.
 
+<p align="center">
+  <a href="https://playwright.dev/docs/intro"><img src="https://img.shields.io/badge/Documentation-Playwright-1c8620.svg?logo=playwright" alt="Playwright.dev"></a>
+  <a href="https://github.com/microsoft/playwright/tree/main"><img src="https://img.shields.io/badge/GitHub-Playwright-1c8620.svg?logo=github" alt="Playwright - GitHub"></a>
+  <a href="https://stackoverflow.com/questions/tagged/playwright"><img src="https://img.shields.io/badge/stackoverflow-Playwright-e87922.svg?logo=stackoverflow" alt="Playwright - Stack Overflow"></a>
+</p>
+
+<p align="center">
+  <a href="https://cucumber.io/"><img src="https://img.shields.io/badge/Documentation-Cucumber-23d96c.svg?logo=Cucumber" alt="Cucumber.io"></a>
+  <a href="https://github.com/cucumber"><img src="https://img.shields.io/badge/GitHub-Cucumber-23d96c.svg?logo=github" alt="Cucumber - GitHub"></a>
+  <a href="https://stackoverflow.com/questions/tagged/cucumber"><img src="https://img.shields.io/badge/stackoverflow-Cucumber-e87922.svg?logo=stackoverflow" alt="Cucumber - Stack Overflow"></a>
+</p>
+
 ## 🟢 Prerequisites
 
 Make sure you have [Node.js](https://nodejs.org/en). The LTS version should be fine. You will also need the `npm` package manager, which comes with Node.js. A development environment or IDE with TypeScript/JavaScript support will help. [Visual Studio Code](https://code.visualstudio.com/) is a good choice.
