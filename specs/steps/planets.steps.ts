@@ -15,6 +15,46 @@ Given("the planet weight page", async function () {
   fixture.logger.info("Navigated to the Planets page");
 });
 
+Given(
+  "a {int} pound person will weigh exactly {float} pounds on Mercury",
+  async function (int, float) {
+    const weight = int.toString();
+    await fixture.page.locator("#wt").fill(weight);
+    await fixture.page.locator("#calculate").click();
+
+    const expectedMercuryWeight = float.toString();
+    const actualMercuryWeight = await fixture.page
+      .locator("#outputmrc")
+      .inputValue();
+
+    expect(actualMercuryWeight).toBe(expectedMercuryWeight);
+  },
+);
+
+Given(
+  "a {int} pound person will weigh approximately {int} pounds on Mercury",
+  async function (int, int2) {
+    const weight = int.toString();
+    await fixture.page.locator("#wt").fill(weight);
+    await fixture.page.locator("#calculate").click();
+
+    const tolerance = 0.9;
+    const expectedMercuryWeight = int2.toString();
+
+    const actualMercuryWeight = await fixture.page
+      .locator("#outputmrc")
+      .inputValue();
+
+    expect(
+      isApproximatelyEqual(
+        parseFloat(actualMercuryWeight),
+        parseFloat(expectedMercuryWeight),
+        tolerance,
+      ),
+    ).toBe(true);
+  },
+);
+
 When("the weight calculated is {int}", async function (int) {
   // Since the scenario step for this does not use quotes,
   // I have to convert the number passed in to a string.
@@ -22,6 +62,11 @@ When("the weight calculated is {int}", async function (int) {
   // data it uses to fill the text field to be a string.
   const weight = int.toString();
 
+  await fixture.page.locator("#wt").fill(weight);
+  await fixture.page.locator("#calculate").click();
+});
+
+When("the weight calculated is {string}", async function (weight) {
   await fixture.page.locator("#wt").fill(weight);
   await fixture.page.locator("#calculate").click();
 });
@@ -63,3 +108,14 @@ Then("the weight on Mercury will be roughly {int}", async function (int) {
     true,
   );
 });
+
+Then(
+  "the weight on Mercury will be exactly {string}",
+  async function (expectedMercuryWeight) {
+    const actualMercuryWeight = await fixture.page
+      .locator("#outputmrc")
+      .inputValue();
+
+    expect(actualMercuryWeight).toBe(expectedMercuryWeight);
+  },
+);
