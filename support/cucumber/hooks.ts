@@ -3,6 +3,8 @@ import { Browser, BrowserContext } from "@playwright/test";
 import { pageFixture } from "./pageFixture";
 import { invokeBrowser } from "../browserManager";
 import { getEnv } from "../env/env";
+import { options } from "./logger";
+import { createLogger } from "winston";
 
 let browser: Browser;
 let context: BrowserContext;
@@ -24,6 +26,10 @@ Before(async function (scenario) {
     context = await browser.newContext();
     const page = await context.newPage();
     pageFixture.page = page;
+
+    const scenarioName = scenario.pickle.name + scenario.pickle.id;
+
+    pageFixture.logger = createLogger(options(scenarioName));
   }
 });
 
@@ -46,5 +52,6 @@ After(async function (scenario) {
 AfterAll(async () => {
   if (browser) {
     await browser.close();
+    pageFixture.logger.close();
   }
 });

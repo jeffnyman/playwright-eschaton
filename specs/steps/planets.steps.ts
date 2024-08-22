@@ -12,6 +12,7 @@ function isApproximatelyEqual(
 
 Given("the planet weight page", async function () {
   await pageFixture.page.goto(`${process.env.BASEURL}/xyzzy/planets.html`);
+  pageFixture.logger.info("Navigated to the Planets page");
 });
 
 When("the weight calculated is {int}", async function (int) {
@@ -32,6 +33,9 @@ Then("the weight on Mercury will be exactly {float}", async function (float) {
     .inputValue();
 
   expect(actualMercuryWeight).toBe(expectedMercuryWeight);
+
+  pageFixture.logger.info(`Expected Mercury Weight: ${expectedMercuryWeight}`);
+  pageFixture.logger.info(`Actual Mercury Weight: ${actualMercuryWeight}`);
 });
 
 Then("the weight on Mercury will be roughly {int}", async function (int) {
