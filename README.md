@@ -271,6 +271,50 @@ This is a custom reporter is provided that generates a very condensed view of te
 
 There is a `Stats` interface provided that the custom summary reporter uses but this can also be used by your own custom reporter, essentially based on the summary report. For an example of how to do that, you'll see a file called `concise.ts` in the `support/reporter` directory. This project uses that concise report as part of the reporter configuration.
 
+## 🥒 Cucumber
+
+This repo shows the usage of Playwright in a Cucumber context. To that end, the repo provides some settings that try to configure Visual Studio Code for you. These are provided in the `.vscode` folder that will activate if you are using that editor. This should hook up the feature files and the step definitions so that the editor is aware of both and how they are connected.
+
+To run a dry run of the specifications:
+
+```shell
+npm run specs:dryrun
+```
+
+To run the specs:
+
+```shell
+npm run specs
+```
+
+If you want to look at the Cucumber report:
+
+```shell
+npm run specs:report
+```
+
+If you want to generate and show the dashboard report:
+
+```shell
+npm run specs:dashboard
+npm run specs:dashboard:show
+```
+
+This repo is set up to have Cucumber generate a "rerun" file for tests that failed. You can run that execution profile like this:
+
+```shell
+npm run specs:rerun
+```
+
+Obviously for that work you would need some failing tests.
+
+Finally, Cucumber.js doesn't easily allow simple execution of one feature file from the command line. It does allow you to pass a regular expression which will check all scenarios for the identifier you provide. Some examples:
+
+```shell
+npx cucumber-js test --name "Weight on Mercury"
+npx cucumber-js test --name "Mercury"
+```
+
 ## 🧬 Code Quality
 
 This project uses Prettier.
