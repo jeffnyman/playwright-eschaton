@@ -6,6 +6,7 @@
   "description": "A Pedagogical Pastiche of Playwright Programming",
   "license": "MIT",
   "scripts": {
+    "clean": "npx rimraf results",
     "specs:report": "npx open-cli results/spec-report.html",
     "specs": "npx cucumber-js test",
     "dryrun": "npx cucumber-js test --dry-run",
@@ -49,6 +50,7 @@
     "newman": "^6.2.1",
     "open-cli": "^8.0.0",
     "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
     "ts-jest": "^29.2.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",

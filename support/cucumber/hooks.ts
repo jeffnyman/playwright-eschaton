@@ -1,4 +1,4 @@
-import { Before, After, AfterAll } from "@cucumber/cucumber";
+import { Before, After, AfterAll, Status } from "@cucumber/cucumber";
 import { chromium, Browser, BrowserContext } from "@playwright/test";
 import { pageFixture } from "./pageFixture";
 
@@ -22,12 +22,14 @@ Before(async function (scenario) {
 
 After(async function (scenario) {
   if (!scenario.pickle.tags.some((tag) => tag.name === "@canary")) {
-    const img = await pageFixture.page.screenshot({
-      path: `./results/screenshots/${scenario.pickle.name}.png`,
-      type: "png",
-    });
+    if (scenario.result?.status == Status.FAILED) {
+      const img = await pageFixture.page.screenshot({
+        path: `./results/screenshots/${scenario.pickle.name}.png`,
+        type: "png",
+      });
 
-    this.attach(img, "image/png");
+      this.attach(img, "image/png");
+    }
 
     await pageFixture.page.close();
     await context.close();
