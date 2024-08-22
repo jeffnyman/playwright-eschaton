@@ -1,6 +1,6 @@
 import { Before, BeforeAll, After, AfterAll, Status } from "@cucumber/cucumber";
 import { Browser, BrowserContext } from "@playwright/test";
-import { pageFixture } from "./pageFixture";
+import { fixture } from "./pageFixture";
 import { invokeBrowser } from "../browserManager";
 import { getEnv } from "../env/env";
 import { options } from "./logger";
@@ -25,18 +25,18 @@ Before(async function (scenario) {
     }
     context = await browser.newContext();
     const page = await context.newPage();
-    pageFixture.page = page;
+    fixture.page = page;
 
     const scenarioName = scenario.pickle.name + scenario.pickle.id;
 
-    pageFixture.logger = createLogger(options(scenarioName));
+    fixture.logger = createLogger(options(scenarioName));
   }
 });
 
 After(async function (scenario) {
   if (!scenario.pickle.tags.some((tag) => tag.name === "@canary")) {
     if (scenario.result?.status == Status.FAILED) {
-      const img = await pageFixture.page.screenshot({
+      const img = await fixture.page.screenshot({
         path: `./results/screenshots/${scenario.pickle.name}.png`,
         type: "png",
       });
@@ -44,7 +44,7 @@ After(async function (scenario) {
       this.attach(img, "image/png");
     }
 
-    await pageFixture.page.close();
+    await fixture.page.close();
     await context.close();
   }
 });
@@ -52,6 +52,6 @@ After(async function (scenario) {
 AfterAll(async () => {
   if (browser) {
     await browser.close();
-    pageFixture.logger.close();
+    fixture.logger.close();
   }
 });

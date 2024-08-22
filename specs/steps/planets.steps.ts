@@ -1,5 +1,5 @@
 import { Given, When, Then } from "@cucumber/cucumber";
-import { pageFixture } from "../../support/cucumber/pageFixture";
+import { fixture } from "../../support/cucumber/pageFixture";
 import { expect } from "@playwright/test";
 
 function isApproximatelyEqual(
@@ -11,8 +11,8 @@ function isApproximatelyEqual(
 }
 
 Given("the planet weight page", async function () {
-  await pageFixture.page.goto(`${process.env.BASEURL}/xyzzy/planets.html`);
-  pageFixture.logger.info("Navigated to the Planets page");
+  await fixture.page.goto(`${process.env.BASEURL}/xyzzy/planets.html`);
+  fixture.logger.info("Navigated to the Planets page");
 });
 
 When("the weight calculated is {int}", async function (int) {
@@ -22,26 +22,26 @@ When("the weight calculated is {int}", async function (int) {
   // data it uses to fill the text field to be a string.
   const weight = int.toString();
 
-  await pageFixture.page.locator("#wt").fill(weight);
-  await pageFixture.page.locator("#calculate").click();
+  await fixture.page.locator("#wt").fill(weight);
+  await fixture.page.locator("#calculate").click();
 });
 
 Then("the weight on Mercury will be exactly {float}", async function (float) {
   const expectedMercuryWeight = float.toString();
-  const actualMercuryWeight = await pageFixture.page
+  const actualMercuryWeight = await fixture.page
     .locator("#outputmrc")
     .inputValue();
 
   expect(actualMercuryWeight).toBe(expectedMercuryWeight);
 
-  pageFixture.logger.info(`Expected Mercury Weight: ${expectedMercuryWeight}`);
-  pageFixture.logger.info(`Actual Mercury Weight: ${actualMercuryWeight}`);
+  fixture.logger.info(`Expected Mercury Weight: ${expectedMercuryWeight}`);
+  fixture.logger.info(`Actual Mercury Weight: ${actualMercuryWeight}`);
 });
 
 Then("the weight on Mercury will be roughly {int}", async function (int) {
   const tolerance = 0.9;
   const expectedMercuryWeight = int.toString();
-  const actualMercuryWeight = await pageFixture.page
+  const actualMercuryWeight = await fixture.page
     .locator("#outputmrc")
     .inputValue();
 
